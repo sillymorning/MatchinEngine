@@ -3,6 +3,7 @@ package com.baraka.matching.controller;
 import com.baraka.matching.dto.OrderRequest;
 import com.baraka.matching.dto.OrderResponse;
 import com.baraka.matching.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderResponse> placeAnOrder(@RequestBody final OrderRequest request) {
+    public ResponseEntity<OrderResponse> placeAnOrder(@Valid @RequestBody final OrderRequest request) {
         OrderResponse order = orderService.placeOrder(request);
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }

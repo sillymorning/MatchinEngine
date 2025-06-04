@@ -3,6 +3,7 @@ package com.baraka.matching.exception;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,6 +21,7 @@ public class ExceptionHandler {
             HttpRequestMethodNotSupportedException.class,
             HttpClientErrorException.MethodNotAllowed.class,
             MethodArgumentTypeMismatchException.class,
+            MethodArgumentNotValidException.class
     })
     public ErrorResponse handleBadRequests(Exception e){
         log.error("Unhandled Exception: ", e);
